@@ -1,4 +1,4 @@
-local config = { circle = { radius = 10, speed = 0.1 }, 
+local config = { circle = { radius = 10, speed = 100 }, 
   keys = { left = "a", down = "s", up = "w", right = "d" } }
 
 local thecircle = { x = 200, y = 200 }
@@ -28,10 +28,14 @@ love.update = function(dt)
 	if (state.keys.left and state.keys.right) or
 	  (state.keys.down and state.keys.up) then return end
 	
-	if state.keys.left  then thecircle.x = thecircle.x - config.circle.speed/dt end
-	if state.keys.down  then thecircle.y = thecircle.y + config.circle.speed/dt end
-	if state.keys.up    then thecircle.y = thecircle.y - config.circle.speed/dt end
-	if state.keys.right then thecircle.x = thecircle.x + config.circle.speed/dt end
+	if state.keys.left  then thecircle.x =
+	  thecircle.x - config.circle.speed * dt end
+	if state.keys.down  then thecircle.y =
+	  thecircle.y + config.circle.speed * dt end
+	if state.keys.up    then thecircle.y =
+	  thecircle.y - config.circle.speed * dt end
+	if state.keys.right then thecircle.x =
+	  thecircle.x + config.circle.speed * dt end
 
 end
 
